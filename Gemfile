@@ -19,4 +19,6 @@ group :test do
   gem 'dm-rspec'
   gem 'database_cleaner'
   gem 'launchy'
+  gem 'rake'
+  gem 'coveralls', require: false
 end
