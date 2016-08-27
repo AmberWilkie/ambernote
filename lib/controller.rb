@@ -17,6 +17,10 @@ class AmberNote < Sinatra::Base
     erb :myhome
   end
 
+  get '/new_entry' do
+    erb :new_entry
+  end
+
   post '/' do
     @user = User.new(params['user'])
     if @user.authenticate(@user[:password])
