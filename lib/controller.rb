@@ -11,4 +11,13 @@ class AmberNote < Sinatra::Base
     erb :index
   end
 
+  post '/' do
+    @user = params['user']
+    if @user.authenticate(@user.password)
+      visit '/myhome'
+    else
+      visit '/'
+    end
+  end
+
 end
