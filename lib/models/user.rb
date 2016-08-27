@@ -1,4 +1,5 @@
 require 'data_mapper'
+require 'helpers/data_mapper'
 
 
 class User
