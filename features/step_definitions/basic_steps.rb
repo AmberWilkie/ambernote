@@ -12,6 +12,10 @@ When(/^I fill in "([^"]*)" with "([^"]*)"$/) do |element, text|
   fill_in element, with: text
 end
 
+When(/^I click the "([^"]*)" button$/) do |button|
+  click_button(button)
+end
+
 Then(/^I should be on the "([^"]*)" page$/) do |page|
   expect(page).to be page
 end

@@ -6,17 +6,23 @@ require_relative 'helpers/data_mapper'
 require 'pry'
 
 class AmberNote < Sinatra::Base
+  enable :sessions
+  set :session_secret, 'super secret'
 
   get '/' do
     erb :index
   end
 
+  get '/myhome' do
+    erb :myhome
+  end
+
   post '/' do
-    @user = params['user']
-    if @user.authenticate(@user.password)
-      visit '/myhome'
+    @user = User.new(params['user'])
+    if @user.authenticate(@user[:password])
+      redirect '/myhome'
     else
-      visit '/'
+      redirect '/'
     end
   end
 
