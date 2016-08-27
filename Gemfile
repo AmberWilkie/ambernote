@@ -10,6 +10,7 @@ gem 'pg'
 gem 'dm-postgres-adapter'
 
 group :test do
+  gem 'shotgun'
   gem 'pry'
   gem 'dotenv'
   gem 'cucumber'
