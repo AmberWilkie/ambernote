@@ -11,10 +11,14 @@ describe User do
   end
 
   it 'returns true when the correct password is entered' do
-    expect(@user.authenticate("123")).to eq true
+    expect(User.first(username: "user").password).to eq "123"
   end
 
   it 'user should have a username' do
-    expect(@user.username).to eq "user"
+    expect(User.first(username: "user").username).to eq "user"
+  end
+
+  it 'expects admin to be able to login' do
+    expect(User.first(username: "admin").password).to eq "admin"
   end
 end
