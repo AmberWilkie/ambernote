@@ -8,7 +8,7 @@ require 'pry'
 class AmberNote < Sinatra::Base
 
   get '/' do
-    "Hello Amber!"
+    erb :index
   end
 
 end

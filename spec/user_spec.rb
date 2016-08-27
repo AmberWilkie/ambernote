@@ -16,7 +16,6 @@ describe User do
   end
 
   after do
-    # DatabaseCleaner.strategy = :truncation
     DatabaseCleaner.clean
   end
 
