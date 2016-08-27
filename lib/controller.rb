@@ -1,13 +1,9 @@
 require 'bundler'
 Bundler.require
 Dir[File.join(File.dirname(__FILE__), 'models', '*.rb')].each { |file| require file }
-# require_relative 'helpers/data_mapper'
-# require_relative 'helpers/warden'
+require_relative 'helpers/data_mapper'
+require_relative 'helpers/warden'
 require 'pry'
-
-get '/' do
-  "Hello Amber!"
-end
 
 class AmberNote < Sinatra::Base
   enable :sessions
@@ -49,6 +45,10 @@ class AmberNote < Sinatra::Base
     env['REQUEST_METHOD'] = 'POST'
   end
 
+  get '/' do
+    erb :index
+  end
+
   post '/' do
     env['warden'].authenticate!
     flash[:success] = "Successfully logged in #{current_user.username}"
@@ -71,7 +71,7 @@ class AmberNote < Sinatra::Base
 
     # Set the error and use a fallback if the message is not defined
     flash[:error] = env['warden.options'][:message] || 'You must log in'
-    redirect '/auth/login'
+    redirect '/'
   end
 
   get '/protected' do
