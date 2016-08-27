@@ -16,7 +16,6 @@ class AmberNote < Sinatra::Base
   if User.count == 0
    @user = User.new(username: "admin")
    @user.password = "admin"
-   binding.pry
    @user.save
   end
 
@@ -54,6 +53,7 @@ class AmberNote < Sinatra::Base
   post '/' do
     env['warden'].authenticate!
     flash[:success] = "Successfully logged in #{current_user.username}"
+    redirect '/' # Change this to their journal page later
     if session[:return_to].nil?
       redirect '/'
     else

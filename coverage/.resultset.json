@@ -1,7 +1,50 @@
 {
   "RSpec": {
     "coverage": {
+      "/Users/Henny/Development/BootcampExtraCredit/ambernote/spec/user_spec.rb": [
+        1,
+        1,
+        null,
+        1,
+        null,
+        1,
+        2,
+        2,
+        2,
+        2,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null,
+        1,
+        0,
+        null,
+        null
+      ],
+      "/Users/Henny/Development/BootcampExtraCredit/ambernote/lib/models/user.rb": [
+        1,
+        null,
+        null,
+        1,
+        1,
+        null,
+        1,
+        1,
+        1,
+        null,
+        1,
+        0,
+        0,
+        null,
+        0,
+        null,
+        null,
+        null,
+        null
+      ]
     },
-    "timestamp": 1472304181
+    "timestamp": 1472314796
   }
 }

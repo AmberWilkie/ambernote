@@ -7,9 +7,10 @@ gem 'sinatra-flash'
 
 gem 'data_mapper'
 gem 'pg'
+gem 'do_postgres'
 gem 'dm-postgres-adapter'
 
-group :test do
+group :test, :development do
   gem 'shotgun'
   gem 'pry'
   gem 'dotenv'
