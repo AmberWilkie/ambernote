@@ -6,6 +6,7 @@ require_relative 'helpers/warden'
 require 'pry'
 
 class AmberNote < Sinatra::Base
+  binding.pry
   enable :sessions
   register Sinatra::Flash
   register Sinatra::Warden
@@ -55,6 +56,7 @@ class AmberNote < Sinatra::Base
     if session[:return_to].nil?
       redirect '/'
     else
+      flash[:error] = "You couldn't be logged in."
       redirect session[:return_to]
     end
   end
@@ -74,9 +76,9 @@ class AmberNote < Sinatra::Base
     redirect '/'
   end
 
-  get '/protected' do
-    env['warden'].authenticate!
-
-    erb :protected
-  end
+  # get '/protected' do
+  #   env['warden'].authenticate!
+  #
+  #   erb :protected
+  # end
 end
