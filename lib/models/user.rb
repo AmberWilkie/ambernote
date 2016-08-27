@@ -6,7 +6,6 @@ class User
 
   property :id, Serial, key: true
   property :username, String, length: 128
-  property :password, BCryptHash
+  property :password, BCryptHash, required: true
 
-  
 end

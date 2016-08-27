@@ -6,7 +6,6 @@ require_relative 'helpers/warden'
 require 'pry'
 
 class AmberNote < Sinatra::Base
-  binding.pry
   enable :sessions
   register Sinatra::Flash
   register Sinatra::Warden
@@ -15,10 +14,12 @@ class AmberNote < Sinatra::Base
   #binding.pry
   #Create a test User
   if User.count == 0
-   @user = User.create(username: "admin")
+   @user = User.new(username: "admin")
    @user.password = "admin"
+   binding.pry
    @user.save
   end
+
 
   use Warden::Manager do |config|
     # Tell Warden how to save our User info into a session.
