@@ -1,4 +1,5 @@
-New Entry for <!-- date is going here -->
+<% date = Time.new %>
+New Entry for <%= date.day %> / <%= date.month %> / <%= date.year %>
 
 <form action="/new_entry" method="post">
 <label for="finished_projects">Finished Projects</label><br>
