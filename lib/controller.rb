@@ -105,7 +105,7 @@ end
     if @user.save
       env['warden'].authenticate!
       flash[:success] = "Account created. Logged in as #{@user.username}"
-      redirect '/register'
+      redirect '/myhome'
     else
       @user.errors.keys.each do |key|
         @user.errors[key].each do |error|
