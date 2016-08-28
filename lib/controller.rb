@@ -9,9 +9,11 @@ class AmberNote < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
 
-  if User.count == 0
-    @user = User.new(username: "amber", password: "amber")
-    @user.save
+  def create_amber_user
+    if User.count == 0
+      @user = User.new(username: "amber", password: "amber")
+      @user.save
+    end
   end
 
   get '/' do
@@ -27,6 +29,7 @@ class AmberNote < Sinatra::Base
   end
 
   post '/' do
+    create_amber_user
     @user = User.first(username: params[:user][:username])
     if @user != nil && @user.authenticate(params[:user][:password])
       redirect '/myhome'
@@ -38,10 +41,7 @@ class AmberNote < Sinatra::Base
   post '/new_entry' do
     ## Test user that will have to be removed when I get registration working
     # Need this here for testing because we don't go through the home page...
-    # if User.count == 0
-    #   @user = User.new(username: "amber", password: "amber")
-    #   @user.save
-    # end
+    create_amber_user
     @entry = Entry.new
     @entry.finished = params[:finished_projects]
     # @entry.user = @user ----> This is the line I want to work. @user should be the current, logged-in user. But to make my tests run, I'm using this:
