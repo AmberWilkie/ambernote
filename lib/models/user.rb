@@ -8,7 +8,8 @@ class User
   property :id, Serial, key: true
   property :username, String
   property :password, String
-  # has n, :entries
+  has n, :entrys
+  # binding.pry
 
   def authenticate(attempted_password)
     if self.password == attempted_password
