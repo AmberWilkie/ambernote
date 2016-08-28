@@ -1,3 +1,13 @@
 <h2>Write something!</h2>
 
 <a href='/new_entry'>New Entry</a>
+
+<p>
+<% user = User.first(username: env['warden'].user[:username]) %>
+<% entries = Entry.all(user: user) %>
+
+<% entries.each do |entry| %>
+
+  entry
+  <% end %>
+</p>
