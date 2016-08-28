@@ -7,4 +7,4 @@ Scenario: I view the list of entries on in "myhome"
   Given I am logged in
   And I am on the "myhome" page
   And I have written an entry on 2016-08-28
-  Then I should see "2016-08-28"
+  Then I should see an entry for "2016-08-28"
