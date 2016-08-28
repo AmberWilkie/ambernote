@@ -3,6 +3,7 @@ Feature: As a programmer
   I'd like to save my journal entries.
 
 Scenario: I save my journal entry for review later
+Given I am logged in
 Given I am on the "New Entry" page
 Then I should see "Entry for"
 And I should see "2016"

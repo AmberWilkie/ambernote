@@ -59,7 +59,12 @@ end
   end
 
   get '/new_entry' do
-    erb :new_entry
+    if env['warden'].authenticated?
+      erb :new_entry
+    else
+      flash[:error] = "You are not logged in"
+      redirect '/'
+    end
   end
 
   get '/logout' do
