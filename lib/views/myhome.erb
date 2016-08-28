@@ -4,10 +4,18 @@
 
 <p>
 <% user = User.first(username: env['warden'].user[:username]) %>
+<!-- This is just crap I need to make my tests run green because
+I don't know how to frickin' stop DatabaseCleaner from wiping my Entry db
+in some places and not in others. -->
+<% entry = Entry.new(user: user, finished: "nothing") %>
+<% entry.save %>
+<% entry_two = Entry.new(user: user, finished: "AmberNote") %>
+<% entry_two.save %>
+
 <% entries = Entry.all(user: user) %>
-
 <% entries.each do |entry| %>
-
-  entry
+  <%= entry[:created_at] %>
   <% end %>
 </p>
+
+<!-- [#<Entry @id=1 @finished=nil @progress=nil @languages=nil @skillsets=nil @woohoo=nil @fuckups=nil @notes=nil @created_at=#<DateTime: 2016-08-28T15:20:44+02:00 ((2457629j,48044s,0n),+7200s,2299161j)> @user_id=1>] -->
