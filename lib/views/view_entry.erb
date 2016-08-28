@@ -1,6 +1,6 @@
 <% entry = Entry.first(id: params[:entry]) %>
 
-<h2>View Entry for <%= entry[:created_at] %></h2>
+<h2>Viewing Entry for <%= entry[:created_at].year %>-<%= entry[:created_at].month %>-<%= entry[:created_at].day %></h2>
 
 <h3>Projects Completed</h3>
 <p>
