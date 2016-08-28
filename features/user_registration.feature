@@ -29,4 +29,23 @@ When I click the "Register" link
 Then I should see "Register as a new user"
 When I fill in "username" with "newuser"
 When I click the "Register" button
-Then I should see "Account could not be created"
+Then I should see "Password must not be blank"
+
+Scenario: Registering to use AmberNote with no username
+Given I am on the "home" page
+When I click the "Register" link
+Then I should see "Register as a new user"
+And I fill in "password" with "amber"
+And I fill in "password_check" with "amber"
+When I click the "Register" button
+Then I should see "Username must not be blank"
+
+Scenario: Registering to use AmberNote with an already-registered username
+Given I am on the "home" page
+When I click the "Register" link
+Then I should see "Register as a new user"
+When I fill in "username" with "amber"
+And I fill in "password" with "amber"
+And I fill in "password_check" with "amber"
+When I click the "Register" button
+Then I should see "Username is already taken"
