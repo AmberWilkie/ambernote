@@ -57,6 +57,13 @@ end
     erb :new_entry
   end
 
+  get '/logout' do
+    env['warden'].raw_session.inspect
+    env['warden'].logout
+    flash[:success] = 'Successfully logged out.'
+    redirect '/'
+  end
+
   post '/' do
     create_amber_user
     @user = User.first(username: params[:user][:username])

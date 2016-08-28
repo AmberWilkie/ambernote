@@ -7,6 +7,11 @@
   <title>AmberNote</title>
 </head>
 <body>
+  <% if env['warden'].user != nil %>
+    Logged in as <%= env['warden'].user %>
+    <a href="/logout">Log Out</a>
+    <% end %>
+
   <% if flash[:success] %>
     <div style="color:green;">
       <%= flash[:success] %>
