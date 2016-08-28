@@ -9,6 +9,11 @@ class AmberNote < Sinatra::Base
   enable :sessions
   set :session_secret, 'super secret'
 
+  if User.count == 0
+    @user = User.new(username: "amber", password: "amber")
+    @user.save
+  end
+
   get '/' do
     erb :index
   end
@@ -22,8 +27,8 @@ class AmberNote < Sinatra::Base
   end
 
   post '/' do
-    @user = User.new(params['user'])
-    if @user.authenticate(@user[:password])
+    @user = User.first(username: params[:user][:username])
+    if @user != nil && @user.authenticate(params[:user][:password])
       redirect '/myhome'
     else
       redirect '/'
@@ -32,11 +37,7 @@ class AmberNote < Sinatra::Base
 
   post '/new_entry' do
     ## Test user that will have to be removed when I get registration working
-    if User.count == 0
-      @user = User.new(username: "amber", password: "amber")
-      @user.save
-    else
-    end
+
 
     @entry = Entry.new
     @entry.finished = params[:finished_projects]
