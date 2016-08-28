@@ -78,6 +78,11 @@ end
     redirect '/'
   end
 
+  get '/view-entry/:entry' do
+
+    erb :view_entry
+  end
+
   post '/' do
     create_amber_user
     @user = User.first(username: params[:user][:username])
