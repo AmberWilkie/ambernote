@@ -30,4 +30,15 @@ class AmberNote < Sinatra::Base
     end
   end
 
+  post '/new_entry' do
+    @entry = Entry.new(params)
+    if @entry.save
+      redirect '/myhome'
+      # flash success message?
+    else
+      redirect '/new_entry'
+      # flash error?
+    end
+  end
+
 end
