@@ -7,16 +7,10 @@ require 'database_cleaner'
 describe User do
 
   before do
-    # DatabaseCleaner.strategy = :transaction
-    # DatabaseCleaner.start
     @user = User.new
     @user.username = "user"
     @user.password = "123"
     @user.save
-  end
-
-  after do
-    # DatabaseCleaner.clean
   end
 
   it 'returns true when the correct password is entered' do

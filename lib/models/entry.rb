@@ -13,6 +13,6 @@ class Entry
   property :fuckups, String
   property :notes, String
 
-  # belongs_to :user
+  belongs_to :user
 
 end
