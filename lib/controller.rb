@@ -7,6 +7,7 @@ require 'pry'
 
 class AmberNote < Sinatra::Base
   enable :sessions
+  register Sinatra::Flash
   set :session_secret, 'super secret'
 
   def create_amber_user
@@ -32,8 +33,10 @@ class AmberNote < Sinatra::Base
     create_amber_user
     @user = User.first(username: params[:user][:username])
     if @user != nil && @user.authenticate(params[:user][:password])
+      flash[:success] = "Successfully logged in"
       redirect '/myhome'
     else
+      flash[:error] = "You could not be logged in"
       redirect '/'
     end
   end
