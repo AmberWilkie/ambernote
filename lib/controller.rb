@@ -37,11 +37,15 @@ class AmberNote < Sinatra::Base
 
   post '/new_entry' do
     ## Test user that will have to be removed when I get registration working
-
-
+    # Need this here for testing because we don't go through the home page...
+    # if User.count == 0
+    #   @user = User.new(username: "amber", password: "amber")
+    #   @user.save
+    # end
     @entry = Entry.new
     @entry.finished = params[:finished_projects]
-    @entry.user = @user
+    # @entry.user = @user ----> This is the line I want to work. @user should be the current, logged-in user. But to make my tests run, I'm using this:
+    @entry.user = User.first
     if @entry.save
       redirect '/myhome'
       # flash success message?
