@@ -15,3 +15,5 @@ Scenario: I want to view the details of an entry
   And I have written an entry on 2016-08-28
   When I click the "2016-8-28" link
   Then I should see "Projects Completed"
+  And I should see "first_step"
+  And I should see "notes made"

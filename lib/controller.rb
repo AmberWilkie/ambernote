@@ -79,7 +79,6 @@ end
   end
 
   get '/view-entry/:entry' do
-
     erb :view_entry
   end
 
@@ -127,6 +126,12 @@ end
     create_amber_user
     @entry = Entry.new
     @entry.finished = params[:finished_projects]
+    @entry.progress = params[:progress]
+    @entry.languages = params[:languages]
+    @entry.skillsets = params[:skillsets]
+    @entry.woohoo = params[:woohoo]
+    @entry.fuckups = params[:fuckups]
+    @entry.notes = params[:notes]
     # @entry.user = @user ----> This is the line I want to work. @user should be the current, logged-in user. But to make my tests run, I'm using this:
     @entry.user = User.first
     if @entry.save
