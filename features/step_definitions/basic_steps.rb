@@ -3,6 +3,8 @@ Given(/^I am on the "([^"]*)" page$/) do |page|
     visit '/'
   elsif page == "myhome"
     visit '/myhome'
+  elsif page == "New Entry"
+    visit '/new_entry'
   end
 end
 
