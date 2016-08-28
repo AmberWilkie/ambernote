@@ -7,6 +7,7 @@ require 'pry'
 
 class AmberNote < Sinatra::Base
   enable :sessions
+  register Sinatra::Flash
   set :session_secret, 'super secret'
 
   def create_amber_user
@@ -32,8 +33,10 @@ class AmberNote < Sinatra::Base
     create_amber_user
     @user = User.first(username: params[:user][:username])
     if @user != nil && @user.authenticate(params[:user][:password])
+      flash[:success] = "Successfully logged in"
       redirect '/myhome'
     else
+      flash[:error] = "You could not be logged in"
       redirect '/'
     end
   end
@@ -47,9 +50,11 @@ class AmberNote < Sinatra::Base
     # @entry.user = @user ----> This is the line I want to work. @user should be the current, logged-in user. But to make my tests run, I'm using this:
     @entry.user = User.first
     if @entry.save
+      flash[:success] = "Entry successfully saved"
       redirect '/myhome'
       # flash success message?
     else
+      flash[:error] = "Entry could not be saved"
       redirect '/new_entry'
       # flash error?
     end

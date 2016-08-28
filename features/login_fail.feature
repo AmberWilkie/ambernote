@@ -7,3 +7,4 @@ When I fill in "username" with "nothing"
 And I fill in "password" with "nothing"
 When I click the "Log In" button
 Then I should see "Hello there!"
+And I should see "You could not be logged in"

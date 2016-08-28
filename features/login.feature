@@ -6,5 +6,6 @@ Then I should see "Hello there!"
 When I fill in "username" with "amber"
 And I fill in "password" with "amber"
 When I click the "Log In" button
-Then I am on the "myhome" page
+Then I should see "Successfully logged in"
+And I am on the "myhome" page
 And I should see "Write something"
