@@ -93,6 +93,10 @@ end
   end
 
   post '/register' do
+    if params[:user][:password] != params[:user][:password_check]
+      flash[:error] = "Passwords do not match."
+      session[:return_to]
+    end
     @user = User.new(username: params[:user][:username], password: params[:user][:password])
     if @user != nil
       begin @user.save

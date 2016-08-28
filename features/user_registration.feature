@@ -12,3 +12,13 @@ And I fill in "password_check" with "newuserpass"
 When I click the "Register" button
 Then I should be on the "myhome" page
 And I should see "Account created. Logged in as newuser"
+
+Scenario: Registering to use AmberNote with mismatched passwords
+Given I am on the "home" page
+When I click the "Register" link
+Then I should see "Register as a new user"
+When I fill in "username" with "newuser"
+And I fill in "password" with "newuserpass"
+And I fill in "password_check" with "newuserwrongpass"
+When I click the "Register" button
+Then I should see "Passwords do not match."
