@@ -9,7 +9,7 @@
 <body>
   <% if env['warden'].user != nil %>
     Logged in as <%= env['warden'].user.username %>
-    <a href="/logout">Log Out</a>
+    <a href="/logout">Log Out</a> <a href="/myhome">My Home</a>
     <% else %>
     <a href="/register">Register</a>
     <% end %>
