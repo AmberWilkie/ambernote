@@ -10,6 +10,8 @@
   <% if env['warden'].user != nil %>
     Logged in as <%= env['warden'].user.username %>
     <a href="/logout">Log Out</a>
+    <% else %>
+    <a href="/register">Register</a>
     <% end %>
 
   <% if flash[:success] %>

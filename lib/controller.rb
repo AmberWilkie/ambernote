@@ -49,6 +49,10 @@ end
     erb :index
   end
 
+  get '/register' do
+    erb :register
+  end
+
   get '/myhome' do
     if env['warden'].authenticated?
       erb :myhome
