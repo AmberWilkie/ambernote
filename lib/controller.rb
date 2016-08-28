@@ -39,10 +39,9 @@ class AmberNote < Sinatra::Base
       @user.save
     else
     end
-    
+
     @entry = Entry.new
     @entry.finished = params[:finished_projects]
-    binding.pry
     @entry.user = @user
     if @entry.save
       redirect '/myhome'
