@@ -94,23 +94,23 @@ end
 
   post '/register' do
     if params[:user][:password] != params[:user][:password_check]
-      flash[:error] = "Passwords do not match."
-      session[:return_to]
+      flash[:error] = 'Passwords do not match.'
+      redirect '/register'
     end
+
     @user = User.new(username: params[:user][:username], password: params[:user][:password])
-    if @user != nil
-      begin @user.save
-        env['warden'].authenticate!
-        flash[:success] = "Account created. Logged in as #{@user.username}"
-        redirect '/myhome'
-      rescue
-        @user.errors[key].each do |error|
-        flash[:error] = error
+
+    if @user.save
+      env['warden'].authenticate!
+      flash[:success] = "Account created. Logged in as #{@user.username}"
+      redirect '/register'
+    else
+      @user.errors.keys.each do |key|
+        @user.errors[key].each do
+          flash[:error] = 'Account could not be created'
         end
       end
-    else
-      flash[:error] = "Account could not be created"
-      redirect '/'
+      redirect '/register'
     end
   end
 
