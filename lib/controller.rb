@@ -2,7 +2,7 @@ require 'bundler'
 Bundler.require
 Dir[File.join(File.dirname(__FILE__), 'models', '*.rb')].each { |file| require file }
 require_relative 'helpers/data_mapper'
-# require_relative 'helpers/warden'
+require_relative 'helpers/warden'
 require 'pry'
 
 class AmberNote < Sinatra::Base
@@ -17,24 +17,71 @@ class AmberNote < Sinatra::Base
     end
   end
 
+  use Warden::Manager do |config|
+  config.default_strategies :password, :basic
+
+  # Tell Warden how to save our User info into a session.
+  # Sessions can only take strings, not Ruby code, we'll store
+  # the User's `id`
+  config.serialize_into_session { |user| user.id }
+  # Now tell Warden how to take what we've stored in the session
+  # and get a User from that information.
+  config.serialize_from_session { |id| User.get(id) }
+
+  # config.scope_defaults :default,
+  #                       # "strategies" is an array of named methods with which to
+  #                       # attempt authentication. We have to define this later.
+  #                       strategies: [:password],
+  #                       # The action is a route to send the user to when
+  #                       # warden.authenticate! returns a false answer. We'll show
+  #                       # this route below.
+  #                       action: 'auth/unauthenticated'
+  # # When a user tries to log in and cannot, this specifies the
+  # # app to send the user to.
+  # config.failure_app = self
+end
+
+# Warden::Manager.before_failure do |env, opts|
+#   env['REQUEST_METHOD'] = 'POST'
+# end
+
   get '/' do
     erb :index
   end
 
   get '/myhome' do
-    erb :myhome
+    if env['warden'].authenticated?
+      erb :myhome
+    else
+      flash[:error] = "You are not logged in"
+      redirect '/'
+    end
   end
 
   get '/new_entry' do
-    erb :new_entry
+    if env['warden'].authenticated?
+      erb :new_entry
+    else
+      flash[:error] = "You are not logged in"
+      redirect '/'
+    end
+  end
+
+  get '/logout' do
+    env['warden'].raw_session.inspect
+    env['warden'].logout
+    flash[:success] = 'Successfully logged out.'
+    redirect '/'
   end
 
   post '/' do
     create_amber_user
     @user = User.first(username: params[:user][:username])
     if @user != nil && @user.authenticate(params[:user][:password])
-      flash[:success] = "Successfully logged in"
-      redirect '/myhome'
+      if env['warden'].authenticate!
+        flash[:success] = "Successfully logged in"
+        redirect '/myhome'
+      end
     else
       flash[:error] = "You could not be logged in"
       redirect '/'

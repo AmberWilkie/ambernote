@@ -4,6 +4,7 @@ Feature: As a programmer
   that have a standardized format.
 
 Scenario: I want to write a journal entry
+Given I am logged in
 Given I am on the "myhome" page
 Then I should see "Write something"
 When I click the "New Entry" link
