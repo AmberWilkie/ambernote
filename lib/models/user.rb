@@ -11,6 +11,8 @@ class User
   has n, :entrys
 
   validates_uniqueness_of :username
+  validates_presence_of :username
+  validates_presence_of :password
 
   def authenticate(attempted_password)
     if self.password == attempted_password
