@@ -1,7 +1,0 @@
-node_modules/*
-coverage/
-coverage/*
-.coveralls.yml
-.DS_Store
-coverage/.last_run.json
-coverage/.resultset.json
