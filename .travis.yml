@@ -1,6 +1,12 @@
 language: ruby
 rvm:
   - 2.2.3
+
+services:
+  - postgresql
+before_script:
+  - psql -c 'create database ambernote_users_test;' -U postgres
+
 script: bundle exec rspec spec
 
 before_install:
