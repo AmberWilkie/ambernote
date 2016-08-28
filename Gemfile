@@ -9,10 +9,10 @@ gem 'sinatra-flash'
 gem 'data_mapper'
 gem 'pg'
 gem 'dm-postgres-adapter'
+gem 'pry'
 
 group :test do
   gem 'shotgun'
-  gem 'pry'
   gem 'dotenv'
   gem 'cucumber'
   gem 'rspec'
