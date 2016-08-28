@@ -50,9 +50,11 @@ class AmberNote < Sinatra::Base
     # @entry.user = @user ----> This is the line I want to work. @user should be the current, logged-in user. But to make my tests run, I'm using this:
     @entry.user = User.first
     if @entry.save
+      flash[:success] = "Entry successfully saved"
       redirect '/myhome'
       # flash success message?
     else
+      flash[:error] = "Entry could not be saved"
       redirect '/new_entry'
       # flash error?
     end
