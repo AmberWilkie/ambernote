@@ -31,7 +31,8 @@ class AmberNote < Sinatra::Base
   end
 
   post '/new_entry' do
-    @entry = Entry.new(params)
+    @entry = Entry.new
+    @entry.finished = params[:finished_projects]
     if @entry.save
       redirect '/myhome'
       # flash success message?
