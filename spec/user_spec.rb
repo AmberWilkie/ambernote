@@ -13,6 +13,11 @@ describe User do
     @user.save
   end
 
+  it {is_expected.to validate_presence_of(:username)}
+  it {is_expected.to validate_uniqueness_of(:username)}
+  it {is_expected.to validate_presence_of(:password)}
+
+
   it 'returns true when the correct password is entered' do
     expect(User.first(username: "user").password).to eq @user.password
   end
