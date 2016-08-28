@@ -7,11 +7,14 @@ Warden::Strategies.add(:password) do
     user = User.first(username: params['user']['username'])
 
     if user.nil?
-      throw(:warden, message: "The username you entered does not exist.")
+      throw(:warden, message: 'The username you entered does not exist.')
     elsif user.authenticate(params['user']['password'])
       success!(user)
     else
-      throw(:warden, message: "The username and password combination you entered could not be found.")
+      throw(
+        :warden,
+        message: 'The username and password combination you entered could not be found.'
+      )
     end
   end
 end
