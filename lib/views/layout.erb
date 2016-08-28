@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>AmberNote</title>
+</head>
+<body>
+  <% if flash[:success] %>
+    <div style="color:green;">
+      <%= flash[:success] %>
+    </div>
+  <% end %>
+
+  <% if flash[:error] %>
+    <div style="color:red;">
+      <%= flash[:error] %>
+    </div>
+  <% end %>
+
+  <%= yield %>
+</body>
+</html>
