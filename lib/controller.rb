@@ -92,6 +92,24 @@ end
     end
   end
 
+  post '/register' do
+    @user = User.new(username: params[:user][:username], password: params[:user][:password])
+    if @user != nil
+      begin @user.save
+        env['warden'].authenticate!
+        flash[:success] = "Account created. Logged in as #{@user.username}"
+        redirect '/myhome'
+      rescue
+        @user.errors[key].each do |error|
+        flash[:error] = error
+        end
+      end
+    else
+      flash[:error] = "Account could not be created"
+      redirect '/'
+    end
+  end
+
   post '/new_entry' do
     ## Test user that will have to be removed when I get registration working
     # Need this here for testing because we don't go through the home page...
