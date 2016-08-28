@@ -12,6 +12,7 @@ class Entry
   property :woohoo, String
   property :fuckups, String
   property :notes, String
+  property :created_at, DateTime
 
   belongs_to :user
 

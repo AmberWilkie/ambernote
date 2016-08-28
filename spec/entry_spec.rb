@@ -24,7 +24,7 @@ describe Entry do
   end
 
   it 'is expected to have a date associated with it' do
-
+    expect((Entry.first(finished: "Blackjack").created_at)).not_to be nil
   end
 
 
