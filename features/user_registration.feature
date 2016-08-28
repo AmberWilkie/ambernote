@@ -8,3 +8,6 @@ When I click the "Register" link
 Then I should see "Register as a new user"
 When I fill in "username" with "newuser"
 And I fill in "password" with "newuserpass"
+And I fill in "password_check" with "newuserpass"
+Then I should be on the "myhome" page
+And I should see "Logged in as newuser"
