@@ -50,7 +50,12 @@ end
   end
 
   get '/myhome' do
-    erb :myhome
+    if env['warden'].authenticated?
+      erb :myhome
+    else
+      flash[:error] = "You are not logged in"
+      redirect '/'
+    end
   end
 
   get '/new_entry' do

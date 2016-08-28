@@ -8,3 +8,11 @@ Given(/^I am logged in$/) do
   click_button("Log In")
   expect(current_path).to eq '/myhome'
 end
+
+Given(/^I am not logged in$/) do
+  # I don't think I should have to do anything here. By default a new setup would not be logged in.
+end
+
+When(/^I try to visit the "([^"]*)" page$/) do |arg1|
+  visit '/myhome'
+end
