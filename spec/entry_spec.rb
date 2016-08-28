@@ -8,11 +8,12 @@ describe Entry do
   before do
     @entry = Entry.new
     @entry.finished = "Blackjack"
+    @entry.progress = "Ambernote"
     @entry.save
   end
 
   it 'is expected to have information in "finished"' do
-    # expect(Entry.first())
+    expect(Entry.first(finished: "Blackjack").progress).to eq "Ambernote"
   end
 
   it 'is expected to have a user associated with it' do
