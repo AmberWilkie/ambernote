@@ -29,7 +29,7 @@ When I click the "Register" link
 Then I should see "Register as a new user"
 When I fill in "username" with "newuser"
 When I click the "Register" button
-Then I should see "Password must not be blank"
+Then I should see "Passwords must be greater than four characters"
 
 Scenario: Registering to use AmberNote with no username
 Given I am on the "home" page
