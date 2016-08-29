@@ -17,9 +17,9 @@ rescue NameError
         '(in the :test group) if you wish to use it.'
 end
 
-# Around do |scenario, block|
-#   DatabaseCleaner.cleaning(&block)
-# end
+Around do |scenario, block|
+  DatabaseCleaner.cleaning(&block)
+end
 
 Capybara.app = AmberNote
 

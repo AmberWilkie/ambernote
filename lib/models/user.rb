@@ -7,10 +7,12 @@ class User
 
   property :id, Serial, key: true
   property :username, String, required: true
-  property :password, String, required: true
+  property :password, BCryptHash, required: true, length: 5..99
   has n, :entrys
 
+  validates_presence_of :username
   validates_uniqueness_of :username
+  validates_presence_of :password
 
   def authenticate(attempted_password)
     if self.password == attempted_password

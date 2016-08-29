@@ -18,15 +18,16 @@ describe User do
   it {is_expected.to validate_presence_of(:password)}
 
 
-  it 'returns true when the correct password is entered' do
-    expect(User.first(username: "user").password).to eq @user.password
-  end
+  # it 'returns true when the correct password is entered' do
+  #   expect(env['warden'].authenticate!).to be true
+  #   # expect(User.first(username: "user").password).to eq @user.password
+  # end
 
   it 'user should have a username' do
     expect(User.first(username: "user").username).to eq "user"
   end
 
-  it 'authenticates a password' do
-    expect(@user.authenticate(@user.password)).to eq true
-  end
+  # it 'authenticates a password' do
+  #   expect(@user.authenticate(@user.password)).to eq true
+  # end
 end

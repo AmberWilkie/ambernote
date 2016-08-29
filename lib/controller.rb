@@ -100,8 +100,13 @@ end
     #again, I only need this line to make my tests run:
     create_amber_user
 
+
     if params[:user][:password] != params[:user][:password_check]
       flash[:error] = 'Passwords do not match.'
+      redirect '/register'
+    end
+    if params[:user][:password].length < 5
+      flash[:error] = 'Passwords must be greater than four characters.'
       redirect '/register'
     end
 
