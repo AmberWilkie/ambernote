@@ -52,6 +52,11 @@
     <a href="/register">Register</a>
     <% end %> -->
 
+  <div class="row blankspace">
+    &nbsp;
+    <p>
+      &nbsp;
+  </div>
   <% if flash[:success] %>
     <div style="color:green;">
       <%= flash[:success] %>
@@ -63,12 +68,6 @@
       <%= flash[:error] %>
     </div>
   <% end %>
-
-  <div class="row blankspace">
-    &nbsp;
-    <p>
-      &nbsp;
-  </div>
   <div class="row login">
     <%= yield %>
   </div>
