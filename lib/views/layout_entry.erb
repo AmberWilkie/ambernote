@@ -64,7 +64,14 @@
     </div>
   <% end %>
 
-  <%= yield %>
+  <div class="row blankspace">
+    &nbsp;
+    <p>
+      &nbsp;
+  </div>
+  <div class="row login">
+    <%= yield %>
+  </div>
   <script src="<%= url("/js/jquery.js")%>"></script>
   <script src="<%= url("/js/foundation.js")%>"></script>
   <script src="<%= url("/js/all.js")%>"></script>
