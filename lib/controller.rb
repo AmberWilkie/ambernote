@@ -46,11 +46,11 @@ end
 # end
 
   get '/' do
-    erb :index
+    erb :index, layout: :layout_index
   end
 
   get '/register' do
-    erb :register
+    erb :register, layout: :layout_index
   end
 
   get '/myhome' do
@@ -64,7 +64,7 @@ end
 
   get '/new_entry' do
     if env['warden'].authenticated?
-      erb :new_entry
+      erb :new_entry, layout: :layout_entry
     else
       flash[:error] = "You are not logged in"
       redirect '/'
@@ -79,7 +79,7 @@ end
   end
 
   get '/view-entry/:entry' do
-    erb :view_entry
+    erb :view_entry, layout: :layout_entry
   end
 
   post '/' do

@@ -1,7 +1,8 @@
 <% date = Time.new %>
-New Entry for <%= date.day %> / <%= date.month %> / <%= date.year %>
+<h4>New Entry for <%= date.day %> / <%= date.month %> / <%= date.year %></h4>
 
 <form action="/new_entry" method="post">
+<div class="large-12 columns entry-form">
 <label for="finished_projects">Finished Projects</label><br>
 <textarea name="finished_projects" cols="100" rows="1" id="finished"></textarea><br>
 <label for="progress">Projects in Progress</label><br>
@@ -13,10 +14,9 @@ New Entry for <%= date.day %> / <%= date.month %> / <%= date.year %>
 <label for="woohoo">Woo-hoo Moments</label><br>
 <textarea name="woohoo" cols="100" rows="3" id="woohoo"></textarea><br>
 <label for="fuckups">Fuck-Ups and Don't Forget:</label><br>
-<textarea name="fuckups" cols="100" rows="5" id="fuckups">-</textarea><br>
+<textarea name="fuckups" cols="100" rows="5" id="fuckups"></textarea><br>
 <label for="notes">Notes</label><br>
 <textarea name="notes" cols="100" rows="5" id="notes"></textarea>
-
-<p><button type="submit">Submit</button></p>
-
+<br><button class="button" type="submit">Submit</button></p>
 </form>
+</div>

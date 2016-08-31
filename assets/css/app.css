@@ -1,0 +1,25 @@
+.login {
+  background-color: #a2a2a2;
+  width: 50em;
+  text-align: center;
+  padding: 2.5em;
+}
+.blackspace {
+  background-color: #ffffff;
+  min-height: 50em;
+}
+.form-login {
+  text-align: left;
+  max-width: 80%;
+}
+.entry-form {
+  text-align: left;
+}
+  label {
+    font-weight: bold;
+
+  }
+.view-entry {
+  text-align: left;
+  /* Dunno, some stuff. */
+}
