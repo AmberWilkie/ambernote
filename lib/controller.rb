@@ -150,7 +150,7 @@ end
     end
   end
 
-  post '/myhome' do
+  get '/nav' do
     binding.pry
     erb :search
   end
