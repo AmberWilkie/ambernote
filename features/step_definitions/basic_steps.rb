@@ -1,3 +1,7 @@
+before do
+  create_amber_user
+end
+
 Given(/^I am on the "([^"]*)" page$/) do |page|
   if page == "home"
     visit '/'
@@ -37,16 +41,12 @@ end
 
 Then(/^I should be on the "([^"]*)" page$/) do |page|
   if page == "home"
-    visit '/'
     goto = '/'
   elsif page == "myhome"
-    visit '/myhome'
     goto = '/myhome'
   elsif page == "New Entry"
-    visit '/new_entry'
     goto = '/new_entry'
   elsif page == "search"
-    visit '/search'
     goto = '/search'
   else
     false
