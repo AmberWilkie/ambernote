@@ -17,6 +17,11 @@ class AmberNote < Sinatra::Base
         @user.save
       end
     end
+
+    def nl2br(s)
+      s.gsub!(/\n/, '<br>')
+      s.gsub!(/\r/, '')
+    end
   end
 
   use Warden::Manager do |config|
@@ -48,7 +53,7 @@ end
 # end
 
   get '/' do
-    # create_amber_user
+    create_amber_user
     erb :index, layout: :layout_index
   end
 
@@ -135,16 +140,17 @@ end
   end
 
   post '/new_entry' do
+
     @entry = Entry.new
-    @entry.finished = params[:finished_projects]
+    @entry.finished = nl2br(params[:finished_projects])
     @entry.progress = params[:progress]
     @entry.languages = params[:languages]
     @entry.skillsets = params[:skillsets]
     @entry.woohoo = params[:woohoo]
     @entry.fuckups = params[:fuckups]
     @entry.notes = params[:notes]
-    # @entry.user = @user ----> This is the line I want to work. @user should be the current, logged-in user. But to make my tests run, I'm using this:
     @entry.user = env['warden'].user
+    # binding.pry
     if @entry.save
       flash[:success] = "Entry successfully saved"
       redirect '/myhome'
