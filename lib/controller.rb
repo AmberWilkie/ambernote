@@ -93,7 +93,6 @@ end
   end
 
   post '/' do
-    create_amber_user
     @user = User.first(username: params[:user][:username])
     if @user != nil && @user.authenticate(params[:user][:password])
       if env['warden'].authenticate!
@@ -107,9 +106,6 @@ end
   end
 
   post '/register' do
-    #again, I only need this line to make my tests run:
-    create_amber_user
-
 
     if params[:user][:password] != params[:user][:password_check]
       flash[:error] = 'Passwords do not match.'
@@ -136,9 +132,6 @@ end
   end
 
   post '/new_entry' do
-    ## Test user that will have to be removed when I get registration working
-    # Need this here for testing because we don't go through the home page...
-    create_amber_user
     @entry = Entry.new
     @entry.finished = params[:finished_projects]
     @entry.progress = params[:progress]

@@ -1,3 +1,7 @@
+before do
+  create_amber_user
+end
+
 Given(/^I am on the "([^"]*)" page$/) do |page|
   if page == "home"
     visit '/'
