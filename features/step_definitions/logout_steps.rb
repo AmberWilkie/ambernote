@@ -1,3 +1,7 @@
+before do
+  create_amber_user
+end
+
 Given(/^I am logged in$/) do
   # This feels so wrong. I am breaking all rules of silo-ing.
   # Found a thing that would allow me to "stub" a log-in but it didn't work.

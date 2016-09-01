@@ -10,10 +10,12 @@ class AmberNote < Sinatra::Base
   register Sinatra::Flash
   set :session_secret, 'super secret'
 
-  def create_amber_user
-    if User.count == 0
-      @user = User.new(username: "amber", password: "amber")
-      @user.save
+  helpers do
+    def create_amber_user
+      if User.count == 0
+        @user = User.new(username: "amber", password: "amber")
+        @user.save
+      end
     end
   end
 
@@ -46,6 +48,7 @@ end
 # end
 
   get '/' do
+    create_amber_user
     erb :index, layout: :layout_index
   end
 
@@ -96,7 +99,6 @@ end
     @user = User.first(username: params[:user][:username])
     if @user != nil && @user.authenticate(params[:user][:password])
       if env['warden'].authenticate!
-        binding.pry
         flash[:success] = "Successfully logged in"
         redirect '/myhome'
       end
@@ -161,13 +163,15 @@ end
       # finished?(entry, keyword) || notes?(entry, keyword)
       # end
       @results = Entry.all.select do |entry|
-        matches_finished?(entry, keyword) ||
+        (entry.user == env['warden'].user) &&
+        (matches_finished?(entry, keyword) ||
         matches_progress?(entry, keyword) ||
         matches_skillsets?(entry, keyword) ||
         matches_languages?(entry, keyword) ||
         matches_woohoo?(entry, keyword) ||
         matches_fuckups?(entry, keyword) ||
         matches_notes?(entry, keyword)
+        )
 
       end
       erb :search
