@@ -157,7 +157,8 @@ end
       # finished?(entry, keyword) || notes?(entry, keyword)
       # end
       @results = Entry.all.select do |entry|
-      (entry.notes.match keyword)
+        matches_notes?(entry, keyword)
+
       end
       erb :search
     else
@@ -166,15 +167,17 @@ end
     end
   end
 
-  def finished?(entry, keyword)
+  def matches_finished?(entry, keyword)
     if (entry.finished.match keyword) == nil
       false
     end
   end
 
-  def notes?(entry, keyword)
+  def matches_notes?(entry, keyword)
     if (entry.notes.match keyword) == nil
       false
+    else
+      true
     end
   end
 
