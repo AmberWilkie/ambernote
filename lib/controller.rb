@@ -62,6 +62,16 @@ end
     end
   end
 
+  get '/fuckups' do
+    if env['warden'].authenticated?
+      @fuckup_results = Entry.all(user: env['warden'].user, :fuckups.not => nil)
+      erb :fuckups
+    else
+      flash[:error] = "You are not logged in"
+      redirect '/'
+    end
+  end
+
   get '/new_entry' do
     if env['warden'].authenticated?
       erb :new_entry, layout: :layout_entry
