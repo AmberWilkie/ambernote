@@ -48,7 +48,7 @@ end
 # end
 
   get '/' do
-    create_amber_user
+    # create_amber_user
     erb :index, layout: :layout_index
   end
 
