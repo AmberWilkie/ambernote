@@ -96,6 +96,7 @@ end
     @user = User.first(username: params[:user][:username])
     if @user != nil && @user.authenticate(params[:user][:password])
       if env['warden'].authenticate!
+        binding.pry
         flash[:success] = "Successfully logged in"
         redirect '/myhome'
       end
