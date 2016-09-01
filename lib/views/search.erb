@@ -5,13 +5,44 @@
   <% @results.reverse_each do |entry| %>
     <div class="large-12 columns">
       <div class="callout">
+        <h3>Viewing Entry for <%= entry[:created_at].year %>-<%= entry[:created_at].month %>-<%= entry[:created_at].day %></h3>
+        </center>
+        <h4>Projects Completed</h4>
+        <p>
+          <%= entry[:finished] %>
+        </p>
 
-        <%= entry.created_at %>
-        <%= entry.notes %>
+        <h4>Projects in Progress</h4>
+        <p>
+          <%= entry[:progress] %>
+        </p>
 
+        <h4>Languages / Tools</h4>
+        <p>
+          <%= entry[:languages] %>
+        </p>
 
+        <h4>Major Skillsets Required / Developing</h4>
+        <p>
+          <%= entry[:skillsets] %>
+        </p>
+
+        <h4>Woo-hoo Moments</h4>
+        <p>
+          <%= entry[:woohoo] %>
+        </p>
+
+        <h4>Fuck-Ups and Don't Forget</h4>
+        <p>
+          <%= entry[:fuckups] %>
+        </p>
+
+        <h4>Notes</h4>
+        <p>
+          <%= entry[:notes] %>
+        </p>
+        </div>
       <br>
-    </div>
     </div>
     <% end %>
   </p>
