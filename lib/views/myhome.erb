@@ -1,16 +1,12 @@
-<div class="row blankspace">
-  &nbsp;
-  <p>&nbsp;
-  </div>
-<div class="row login">
+<div id="main">
 <h2>Agile fucking reflection, yo!</h2>
 
 <a href='/new_entry' class="simple button">New Entry</a>
 
-<p>
+<p id="main">
 <% user = User.first(username: env['warden'].user[:username]) %>
 <% entries = Entry.all(user: user) %>
-<% entries.reverse_each do |entry| %>
+<% entries.reverse.each do |entry| %>
   <% entry_id = entry[:id] %>
   <div class="large-12 columns">
     <div class="callout">
@@ -20,5 +16,6 @@
   </div>
   <% end %>
 </p>
+</div>
 </div>
 <!-- [#<Entry @id=1 @finished=nil @progress=nil @languages=nil @skillsets=nil @woohoo=nil @fuckups=nil @notes=nil @created_at=#<DateTime: 2016-08-28T15:20:44+02:00 ((2457629j,48044s,0n),+7200s,2299161j)> @user_id=1>] -->

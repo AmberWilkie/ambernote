@@ -9,5 +9,5 @@ Then I should see "Entry for"
 And I should see "2016"
 And I fill in "finished" with "project"
 When I click the "Submit" button
-Then I should see "Write something"
+Then I should see "Agile"
 And I should see "Entry successfully saved"

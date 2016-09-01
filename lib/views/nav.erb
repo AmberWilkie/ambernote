@@ -1,0 +1,50 @@
+<!-- NAV -->
+<div class="top-bar">
+<div class="top-bar-left">
+  <ul class="dropdown menu" data-dropdown-menu>
+    <li class="menu-text">AmberNote</li>
+    <!-- <li>
+      <a href="#">One</a>
+      <ul class="menu vertical">
+        <li><a href="#">One</a></li>
+        <li><a href="#">Two</a></li>
+        <li><a href="#">Three</a></li>
+      </ul>
+    </li> -->
+    <li><a href="/myhome">Home</a></li>
+    <li><a href="/new_entry" name="new_entry_nav">New Entry</a></li>
+    <% if env['warden'].user != nil %>
+      <li>Logged in as <%= env['warden'].user.username %> </li>
+      <li><a href="/logout">Log Out</a></li>
+      <% end %>
+
+    <!-- <li><a href="#">Log Out</a></li> -->
+
+  </ul>
+</div>
+<div class="top-bar-right">
+  <ul class="menu">
+    <li><form action='/search' method="get"> <!-- Shit! How do I make '/myhome' the current page? -->
+    <input type="search" id="search" name="search_input" placeholder="Search Entries">
+    <input type="submit" class="button" value="Search" />
+    </form>
+  </ul>
+</div>
+</div>
+
+<div class="row blankspace">
+  &nbsp;
+  <p>
+    &nbsp;
+</div>
+<% if flash[:success] %>
+  <div style="color:green;">
+    <%= flash[:success] %>
+  </div>
+<% end %>
+
+<% if flash[:error] %>
+  <div style="color:red;">
+    <%= flash[:error] %>
+  </div>
+<% end %>

@@ -10,61 +10,11 @@
 </head>
 <body>
 
-  <!-- NAV -->
-  <div class="top-bar">
-  <div class="top-bar-left">
-    <ul class="dropdown menu" data-dropdown-menu>
-      <li class="menu-text">AmberNote</li>
-      <!-- <li>
-        <a href="#">One</a>
-        <ul class="menu vertical">
-          <li><a href="#">One</a></li>
-          <li><a href="#">Two</a></li>
-          <li><a href="#">Three</a></li>
-        </ul>
-      </li> -->
-      <li><a href="/myhome">Home</a></li>
-      <li><a href="/new_entry">New Entry</a></li>
-      <% if env['warden'].user != nil %>
-        <li>Logged in as <%= env['warden'].user.username %> </li>
-        <li><a href="/logout">Log Out</a></li>
-        <% end %>
-
-      <!-- <li><a href="#">Log Out</a></li> -->
-
-    </ul>
-  </div>
-  <div class="top-bar-right">
-    <ul class="menu">
-      <li><input type="search" placeholder="Search Entries"></li>
-      <li><button type="button" class="button">Search</button></li>
-    </ul>
-  </div>
-</div>
-
-
-
-
-  <!-- <% if env['warden'].user != nil %>
-    Logged in as <%= env['warden'].user.username %>
-    <a href="/logout">Log Out</a> <a href="/myhome">My Home</a>
-    <% else %>
-    <a href="/register">Register</a>
-    <% end %> -->
-
-  <% if flash[:success] %>
-    <div style="color:green;">
-      <%= flash[:success] %>
-    </div>
-  <% end %>
-
-  <% if flash[:error] %>
-    <div style="color:red;">
-      <%= flash[:error] %>
-    </div>
-  <% end %>
+  <%= erb :nav %>
+  <div class="row login">
 
   <%= yield %>
+</div>
   <script src="<%= url("/js/jquery.js")%>"></script>
   <script src="<%= url("/js/foundation.js")%>"></script>
   <script src="<%= url("/js/all.js")%>"></script>
