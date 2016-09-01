@@ -15,3 +15,7 @@ Then(/^I should see an entry for today's date$/) do
   visit '/myhome'
   expect(page).to have_content Date.today.year
 end
+
+Then(/^I fill in "([^"]*)" with$/) do |element, multiline|
+  fill_in element, with: multiline
+end

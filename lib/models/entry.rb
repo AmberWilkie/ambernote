@@ -3,15 +3,17 @@ require 'pry'
 
 class Entry
   include DataMapper::Resource
+  DataMapper::Property::String.length(5000)
+  DataMapper::Property::Text.length(5000)
 
   property :id, Serial, key: true
-  property :finished, String
-  property :progress, String
-  property :languages, String
-  property :skillsets, String
-  property :woohoo, String
-  property :fuckups, String
-  property :notes, String
+  property :finished, Text
+  property :progress, Text
+  property :languages, Text
+  property :skillsets, Text
+  property :woohoo, Text
+  property :fuckups, Text
+  property :notes, Text
   property :created_at, DateTime
 
   belongs_to :user
