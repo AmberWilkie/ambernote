@@ -4,8 +4,10 @@
   <% @fuckup_results.reverse_each do |entry| %>
     <div class="large-12 columns">
       <div class="callout">
-        <%= entry.created_at %>:<br>
-        <%= entry.fuckups %>
-        <% end %>
+        <p>
+          <h4>Fuckups for <%= entry[:created_at].year %>-<%= entry[:created_at].month %>-<%= entry[:created_at].day %></h4><br>
+          <%= entry.fuckups %>
+          <% end %>
+        </p>
       </div>
     </div>
