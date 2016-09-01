@@ -150,9 +150,32 @@ end
     end
   end
 
-  get '/nav' do
-    binding.pry
-    erb :search
+  get '/search' do
+    keyword = params[:search_input]
+    if env['warden'].authenticated?
+      # @results = Entry.all.select do |entry|
+      # finished?(entry, keyword) || notes?(entry, keyword)
+      # end
+      @results = Entry.all.select do |entry|
+      (entry.notes.match keyword)
+      end
+      erb :search
+    else
+      flash[:error] = "You are not logged in"
+      redirect '/'
+    end
+  end
+
+  def finished?(entry, keyword)
+    if (entry.finished.match keyword) == nil
+      false
+    end
+  end
+
+  def notes?(entry, keyword)
+    if (entry.notes.match keyword) == nil
+      false
+    end
   end
 
 end

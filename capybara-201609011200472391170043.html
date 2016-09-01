@@ -1,4 +1,16 @@
-<!-- NAV -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <link rel="stylesheet" href="http://www.example.com/css/foundation.css">
+  <link rel="stylesheet" href="http://www.example.com/css/app.css">
+  <title>AmberNote</title>
+</head>
+<body>
+
+  <!-- NAV -->
 <div class="top-bar">
 <div class="top-bar-left">
   <ul class="dropdown menu" data-dropdown-menu>
@@ -13,10 +25,10 @@
     </li> -->
     <li><a href="/myhome">Home</a></li>
     <li><a href="/new_entry" name="new_entry_nav">New Entry</a></li>
-    <% if env['warden'].user != nil %>
-      <li>Logged in as <%= env['warden'].user.username %> </li>
+    
+      <li>Logged in as amber </li>
       <li><a href="/logout">Log Out</a></li>
-      <% end %>
+      
 
     <!-- <li><a href="#">Log Out</a></li> -->
 
@@ -37,14 +49,33 @@
   <p>
     &nbsp;
 </div>
-<% if flash[:success] %>
-  <div style="color:green;">
-    <%= flash[:success] %>
-  </div>
-<% end %>
 
-<% if flash[:error] %>
-  <div style="color:red;">
-    <%= flash[:error] %>
+
+  <div class="row login">
+
+  
+<h2>Searching your entries!</h2>
+
+<p>
+  
+    <div class="large-12 columns">
+      <div class="callout">
+
+        2016-09-01T12:00:46+02:00
+        ruby is awesome
+
+
+      <br>
+    </div>
+    </div>
+    
+  </p>
   </div>
-<% end %>
+
+</div>
+  <script src="http://www.example.com/js/jquery.js"></script>
+  <script src="http://www.example.com/js/foundation.js"></script>
+  <script src="http://www.example.com/js/all.js"></script>
+
+</body>
+</html>

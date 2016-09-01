@@ -36,7 +36,22 @@ When(/^I click the "([^"]*)" link in the "([^"]*)" section of the page$/) do |bu
 end
 
 Then(/^I should be on the "([^"]*)" page$/) do |page|
-  expect(page).to be page
+  if page == "home"
+    visit '/'
+    goto = '/'
+  elsif page == "myhome"
+    visit '/myhome'
+    goto = '/myhome'
+  elsif page == "New Entry"
+    visit '/new_entry'
+    goto = '/new_entry'
+  elsif page == "search"
+    visit '/search'
+    goto = '/search'
+  else
+    false
+  end
+  expect(current_path).to eq goto
 end
 
 When(/^I click the "([^"]*)" link$/) do |link|

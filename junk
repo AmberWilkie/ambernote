@@ -1,0 +1,16 @@
+<%  search_results = Entry.all(user: env['warden'].user, :finished.match @search) %>
+<%  search_results += Entry.all(user: env['warden'].user, :progress.match @search) %>
+<%  search_results += Entry.all(user: env['warden'].user, :languages.match @search) %>
+<%  search_results += Entry.all(user: env['warden'].user, :skillsets.match @search) %>
+<%  search_results += Entry.all(user: env['warden'].user, :woohoo.match @search) %>
+<%  search_results += Entry.all(user: env['warden'].user, :fuckups.match @search) %>
+<%  search_results += Entry.all(user: env['warden'].user, :notes.match @search) %>
+
+<!-- [#<Entry @id=1 @finished=nil @progress=nil @languages=nil @skillsets=nil @woohoo=nil @fuckups=nil @notes=nil @created_at=#<DateTime: 2016-08-28T15:20:44+02:00 ((2457629j,48044s,0n),+7200s,2299161j)> @user_id=1>] -->
+<!-- <%= entry[:finished] %>
+<%= entry[:progress] %>
+<%= entry[:languages] %>
+<%= entry[:skillsets] %>
+<%= entry[:woohoo] %>
+<%= entry[:fuckups] %>
+<%= entry[:notes] %> -->

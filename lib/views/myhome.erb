@@ -6,7 +6,7 @@
 <p id="main">
 <% user = User.first(username: env['warden'].user[:username]) %>
 <% entries = Entry.all(user: user) %>
-<% entries.reverse_each do |entry| %>
+<% entries.reverse.each do |entry| %>
   <% entry_id = entry[:id] %>
   <div class="large-12 columns">
     <div class="callout">
