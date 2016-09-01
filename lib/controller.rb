@@ -157,6 +157,12 @@ end
       # finished?(entry, keyword) || notes?(entry, keyword)
       # end
       @results = Entry.all.select do |entry|
+        matches_finished?(entry, keyword) ||
+        matches_progress?(entry, keyword) ||
+        matches_skillsets?(entry, keyword) ||
+        matches_languages?(entry, keyword) ||
+        matches_woohoo?(entry, keyword) ||
+        matches_fuckups?(entry, keyword) ||
         matches_notes?(entry, keyword)
 
       end
@@ -168,13 +174,69 @@ end
   end
 
   def matches_finished?(entry, keyword)
-    if (entry.finished.match keyword) == nil
+    if entry.finished.nil?
       false
+    elsif (entry.finished.match keyword) == nil
+      false
+    else
+      true
+    end
+  end
+
+  def matches_progress?(entry, keyword)
+    if entry.progress.nil?
+      false
+    elsif (entry.progress.match keyword) == nil
+      false
+    else
+      true
+    end
+  end
+
+  def matches_languages?(entry, keyword)
+    if entry.languages.nil?
+      false
+    elsif (entry.languages.match keyword) == nil
+      false
+    else
+      true
+    end
+  end
+
+  def matches_fuckups?(entry, keyword)
+    if entry.fuckups.nil?
+      false
+    elsif (entry.fuckups.match keyword) == nil
+      false
+    else
+      true
+    end
+  end
+
+  def matches_skillsets?(entry, keyword)
+    if entry.skillsets.nil?
+      false
+    elsif (entry.skillsets.match keyword) == nil
+      false
+    else
+      true
+    end
+  end
+
+  def matches_woohoo?(entry, keyword)
+    if entry.woohoo.nil?
+      false
+    elsif (entry.woohoo.match keyword) == nil
+      false
+    else
+      true
     end
   end
 
   def matches_notes?(entry, keyword)
-    if (entry.notes.match keyword) == nil
+    if entry.notes.nil?
+      false
+    elsif (entry.notes.match keyword) == nil
       false
     else
       true
