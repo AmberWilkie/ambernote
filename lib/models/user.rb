@@ -7,7 +7,7 @@ class User
 
   property :id, Serial, key: true
   property :username, String, required: true
-  property :password, BCryptHash, required: true, length: 255
+  property :password, BCryptHash, required: true, length: 99
   has n, :entrys
 
   validates_presence_of :username
