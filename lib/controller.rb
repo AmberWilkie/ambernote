@@ -150,4 +150,9 @@ end
     end
   end
 
+  post '/myhome' do
+    binding.pry
+    erb :search
+  end
+
 end

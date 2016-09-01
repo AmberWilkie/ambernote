@@ -1,0 +1,32 @@
+
+<h2>Searching your entries!</h2>
+
+<!-- <a href='/new_entry' class="simple button">New Entry</a> -->
+
+<p>
+<%  search_results = Entry.all(user: env['warden'].user, :finished.ilike => params[:search]) %>
+<%  search_results += Entry.all(user: env['warden'].user, :progress.ilike => params[:search]) %>
+<%  search_results += Entry.all(user: env['warden'].user, :languages.ilike => params[:search]) %>
+<%  search_results += Entry.all(user: env['warden'].user, :skillsets.ilike => params[:search]) %>
+<%  search_results += Entry.all(user: env['warden'].user, :woohoo.ilike => params[:search]) %>
+<%  search_results += Entry.all(user: env['warden'].user, :fuckups.ilike => params[:search]) %>
+<%  search_results += Entry.all(user: env['warden'].user, :notes.ilike => params[:search]) %>
+<% search_results.reverse_each do |entry| %>
+<% binding.pry %>
+  <div class="large-12 columns">
+    <div class="callout">
+    <%= entry[:finished] %>
+    <%= entry[:progress] %>
+    <%= entry[:languages] %>
+    <%= entry[:skillsets] %>
+    <%= entry[:woohoo] %>
+    <%= entry[:fuckups] %>
+    <%= entry[:notes] %>
+
+    <br>
+  </div>
+  </div>
+  <% end %>
+</p>
+</div>
+<!-- [#<Entry @id=1 @finished=nil @progress=nil @languages=nil @skillsets=nil @woohoo=nil @fuckups=nil @notes=nil @created_at=#<DateTime: 2016-08-28T15:20:44+02:00 ((2457629j,48044s,0n),+7200s,2299161j)> @user_id=1>] -->

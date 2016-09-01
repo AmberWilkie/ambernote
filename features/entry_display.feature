@@ -6,14 +6,14 @@ Feature: As a programmer
 Scenario: I view the list of entries on in "myhome"
   Given I am logged in
   And I am on the "myhome" page
-  And I have written an entry on 2016-08-29
-  Then I should see an entry for "2016-8-29"
+  And I have written an entry on today's date
+  Then I should see an entry for today's date
 
 Scenario: I want to view the details of an entry
   Given I am logged in
   And I am on the "myhome" page
-  And I have written an entry on 2016-08-29
-  When I click the "2016-8-29" link
+  And I have written an entry on today's date
+  When I click the "2016-8-31" link
   Then I should see "Projects Completed"
   And I should see "first_step"
   And I should see "notes made"

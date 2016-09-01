@@ -8,6 +8,11 @@ Given(/^I am on the "([^"]*)" page$/) do |page|
   elsif page == "New Entry"
     visit '/new_entry'
     goto = '/new_entry'
+  elsif page == "search"
+    visit '/search'
+    goto = '/search'
+  else
+    false
   end
   expect(current_path).to eq goto
 end
@@ -22,6 +27,12 @@ end
 
 When(/^I click the "([^"]*)" button$/) do |button|
   click_button(button)
+end
+
+When(/^I click the "([^"]*)" link in the "([^"]*)" section of the page$/) do |button, div_id|
+  # find(div_id).find(button).click
+  # within(:css, div_id) { click_button(button) }
+  page.find(:css, div_id).find(button).click
 end
 
 Then(/^I should be on the "([^"]*)" page$/) do |page|
